@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        #inputText {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        #generateBtn {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #generateBtn:hover {
+            background-color: #45a049;
+        }
+
+        #qrCode {
+            margin-top: 20px;
+        }
+
+        #adSpace1, #adSpace2 {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ddd;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="adSpace1">
+        <!-- Add your advertisement content here -->
+        <p>Advertisement Space 1</p>
+    </div>
+
+    <h1>QR Code Generator</h1>
+
+    <label for="inputText">Enter text or URL:</label>
+    <input type="text" id="inputText" placeholder="Type here">
+
+    <button id="generateBtn" onclick="generateQRCode()">Generate QR Code</button>
+
+    <div id="qrCode"></div>
+
+    <div id="adSpace2">
+        <!-- Add your advertisement content here -->
+        <p>Advertisement Space 2</p>
+    </div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        function generateQRCode() {
+            var inputText = document.getElementById('inputText').value.trim();
+
+            if (inputText === "") {
+                alert("Please enter some text or URL");
+                return;
+            }
+
+            var qrCodeDiv = document.getElementById('qrCode');
+            qrCodeDiv.innerHTML = ""; // Clear previous QR code
+
+            var qrcode = new QRCode(qrCodeDiv, {
+                text: inputText,
+                width: 128,
+                height: 128
+            });
+        }
+    </script>
+</body>
+</html>
